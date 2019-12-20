@@ -5,6 +5,7 @@
 -   handle network I/O
 -   handle file I/O
 -   handle heavy computations
+-   producer–consumer problem
 
 ## Resources
 
