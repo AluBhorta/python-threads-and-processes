@@ -45,14 +45,15 @@ def by_map(secs):
             print(r)
 
 
-t1 = time.perf_counter()
+if __name__ == "__main__":
+    t1 = time.perf_counter()
 
-secs = [5, 4, 3, 2, 1]
-# one_by_one()
-# in_loop(secs)
-# in_loop_as_completed(secs)
-by_map(secs)
+    secs = [5, 4, 3, 2, 1]
+    # one_by_one()
+    in_loop(secs)
+    # in_loop_as_completed(secs)
+    # by_map(secs)
 
-t2 = time.perf_counter()
+    t2 = time.perf_counter()
 
-print(f"Time taken {round(t2-t1, 4)} sec(s)...")
+    print(f"Time taken {round(t2-t1, 4)} sec(s)...")

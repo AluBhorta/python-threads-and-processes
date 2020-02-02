@@ -32,11 +32,12 @@ def run_in_loop():
         p.join()
 
 
-t1 = time.perf_counter()
+if __name__ == "__main__":
+    t1 = time.perf_counter()
 
-# run_one_by_one()
-run_in_loop()
+    # run_one_by_one()
+    run_in_loop()
 
-t2 = time.perf_counter()
+    t2 = time.perf_counter()
 
-print(f"Time taken {round(t2-t1, 4)} sec(s)...")
+    print(f"Time taken {round(t2-t1, 4)} sec(s)...")
