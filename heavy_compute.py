@@ -1,5 +1,6 @@
 import time
 import concurrent.futures as futures
+from bench import bench
 
 
 def _run_for(n=int(1e7)):
@@ -9,6 +10,13 @@ def _run_for(n=int(1e7)):
     return c
 
 
+@bench
+def run_sequencially(n=10):
+    for _ in range(n):
+        print(_run_for())
+
+
+@bench
 def run_with_threads(n=10):
     with futures.ThreadPoolExecutor() as executor:
         fs = [executor.submit(_run_for) for _ in range(n)]
@@ -17,6 +25,7 @@ def run_with_threads(n=10):
             print(f.result())
 
 
+@bench
 def run_with_processes(n=10):
     with futures.ProcessPoolExecutor() as executor:
         fs = [executor.submit(_run_for) for _ in range(n)]
@@ -28,12 +37,8 @@ def run_with_processes(n=10):
 
 if __name__ == "__main__":
 
-    t1 = time.perf_counter()
+    n = 20
 
-    # res = [_run_for() for _ in range(times)]
-    # run_with_threads(20)
-    run_with_processes(20)
-
-    t2 = time.perf_counter()
-
-    print(f'Finished in {t2-t1} seconds')
+    # run_sequencially(n)
+    # run_with_threads(n)
+    run_with_processes(n)
